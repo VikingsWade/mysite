@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holidays Booking</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">TextUtils.com</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled">Make your own content</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+    </nav>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Holiday Diaries !</strong>
+    </div>
+    <form class="row g-3" action='/analyse' method="post" style="margin:20px"> {% csrf_token %}
+      <div class="col-md-4"> 
+        <label for="first_name" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="first_name" name="first_name" required>
+      </div>
+      <div class="col-md-4">
+        <label for="last_name" class="form-label">Last name</label>
+        <input type="text" class="form-control" id="last_name" name="last_name" required>
+      </div>
+      <div class="col-md-2">
+        <label for="birthdate" class="form-label">Birthdate</label>
+        <input type="date" class="form-control" id="birthdate" max="2005-12-31" name="birthdate" required>
+      </div>
+      <div class="col-md-2">
+        <label for="appt" class="form-label">Time</label>
+        <input type="time" class="form-control" id="appt" name="appt">
+      </div>
+
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email id</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="col-md-6">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input type="tel" class="form-control" id="phone" name="phone" required>
+      </div>
+      <div class="col-md-4">
+        <label for="inputCity" class="form-label">From City</label>
+        <input type="text" class="form-control" id="inputCity" name="inputCity" required>
+      </div>
+      <div class="col-md-4">
+        <label for="holidayplace" class="form-label">Choose place for holidays</label>
+        <select id="holidayplace" class="form-select" name="holidayplace" required>
+          <option selected>Choose...</option>
+          <option>Laddakh</option>
+          <option>Leh</option>
+          <option>Goa</option>
+          <option>Manali</option>
+          <option>Sikkim</option>
+          <option>Uttarakhand</option>
+          <option>Khashmir</option>
+        </select>
+      </div>
+      <div class="col-md-4 inline">
+        <label class="form-check">Gender</label>
+        <label for='male' class="form-check form-check-inline"><input type='radio' name='radio' id='male' value="male" checked> Male </label>
+        <label for='female' class="form-check form-check-inline"><input type='radio' name='radio' id='female' value="female"> Female</label>
+      </div>  
+      <div class="col-md-6">
+      <label for="range" class="form-label">Example range</label>
+      <input type="range" class="form-range" min="0" max="10" step="0.5" name="range" id="range">
+      </div>
+      <div class="form-check form-switch col-md-6 mt-5">
+        <input class="form-check-input" type="checkbox" name="checkbox" role="switch" id="flexSwitchCheckChecked">
+        <label class="form-check-label" for="flexSwitchCheckChecked">Other Activies</label>
+      </div>
+      <div class="col-md-12">
+        <label for="textarea" class="form-label">Write down if you have any concerns or health issues</label>
+        <textarea class="form-control" id="textarea" name="textarea" rows="3"></textarea>
+      </div>
+      <div class="col-md-6">
+        <label for="password" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="password" name="password" minlength="4" maxlength="6" inputmode="numeric" required>
+        </div>
+      </div>
+        <div class="col-md-6">
+        <select class="form-select" multiple aria-label="multiple select example" name="multiselection">
+          <option value="0" selected>Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <div class="col-md-12">
+      <button type='submit' class="btn btn-success">Submit</button>
+      </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  </body>
+</html>
