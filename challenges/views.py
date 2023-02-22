@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Employee
 from django.db.models import Q
+from challenges.models import Employee
 
 def welcome(request):
     return render(request, 'index.html')
@@ -9,6 +10,15 @@ def showtable(request):
     posts = Employee.objects.all()
     print(posts)
     return render(request, 'index2.html', {'post': posts})
+
+def SaveData(request):
+    if request.method == "POST":
+        first_name = request.POST.get('first_name', 'default')
+        last_name = request.POST.get('last_name', 'default')
+        inputCity = request.POST.get('inputCity', 'default')
+        data = Employee(first_name = first_name, last_name = last_name, middle_name = inputCity)
+        data.save()
+    return render(request, 'index2.html')
 
 def Showbyfilter(request):
     posts = Employee.objects.filter( Q(middle_name__startswith="S") | Q(middle_name__startswith="J"))

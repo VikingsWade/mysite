@@ -20,6 +20,6 @@ from challenges import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.welcome, name='index'),
-    path('employee/', include('challenges.urls')),
+    path('analyse', views.SaveData),
     path('analyse', views.analyse, name='analyse'),
 ]
